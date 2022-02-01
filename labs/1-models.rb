@@ -11,6 +11,43 @@ Contact.destroy_all
 # 1a. check out the schema file
 # 1b. check out the model file
 
+p Company.all.count
+
+kellogg = Company.where({ name: "Kellogg"})[0]
+puts kellogg.inspect
+
+values = { first_name: "Craig",
+            last_name: "Bumpus",
+            email: "c.g@apple.com",
+            phone_number: "3152739365",
+            company_id: kellogg.id }
+ contact = Contact.new(values)
+contact.save
+    
+booth = Company.where({ name: "Booth"})[0]
+booth_id = booth.id
+
+contact = Contact.new
+contact.first_name = "Clif"
+contact.last_name = "Bersani"
+contact.email = "cbersani@booth.edu"
+contact.phone_number = "3152738765"
+contact.company_id = booth_id
+contact.save
+
+
+ross = Company.where({ name: "Ross"})[0]
+
+values = { first_name: "Brian",
+            last_name: "Ross",
+            email: "bross@ross.com",
+            phone_number: "3279365723",
+            company_id: ross.id }
+ contact = Contact.new(values)
+contact.save
+    
+
+
 # 2. create 1-2 new contacts for each company (they can be made up)
 
 # 3. write code to display how many contacts are in the database AND each contact's info (name, email), e.g.:
